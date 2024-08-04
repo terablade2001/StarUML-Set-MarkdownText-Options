@@ -38,12 +38,38 @@ function setMarkdownTextSize() {
 }
 
 
+function setMarkdownTextWrapping(onOff) {
+  document.querySelectorAll('.CodeMirror').forEach(function(editor) {
+    editor.CodeMirror.setOption('lineWrapping', onOff);
+  });
+  if (onOff == true) {
+    app.toast.info("Markdown wrapping is now [ENABLED]")
+  } else {
+    app.toast.info("Markdown wrapping is now [DISABLED]")
+  }
+}
+
+function updateMarkdownTextWrapping() {
+  wrapping = prefManager.get("SetMarkdownTextOptions::Wrapping")
+  if ((!wrapping) || (wrapping == false)) {
+    wrapping = true
+  } else {
+    wrapping = false
+  }
+  prefManager.set("SetMarkdownTextOptions::Wrapping", wrapping)
+  setMarkdownTextWrapping(wrapping)
+}
+
+
 let prefManager
 function init () {
   prefManager = app.preferences
   app.commands.register('SetMarkdownTextOptions:setMarkdownTextSize', setMarkdownTextSize)
+  app.commands.register('SetMarkdownTextOptions:updateMarkdownTextWrapping', updateMarkdownTextWrapping)
   fontSize = prefManager.get("SetMarkdownTextOptions::FontSize")
+  wrapping = prefManager.get("SetMarkdownTextOptions::Wrapping")
   if (fontSize) { setDefinedMarkdownTextSize(fontSize+"px") }
+  if (wrapping) { setMarkdownTextWrapping(wrapping) }
 }
 
 exports.init = init
