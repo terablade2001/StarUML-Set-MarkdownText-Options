@@ -1,3 +1,10 @@
+function setDefinedMarkdownTextSize(fontSize)  {
+  document.querySelectorAll('.CodeMirror').forEach(function(editor) {
+    editor.style.fontSize = fontSize
+  });
+  // console.log("New font size set: ["+fontSize+"]")
+}
+
 function setMarkdownTextSize() {
   var currentFontSize = "default"
   document.querySelectorAll('.CodeMirror').forEach(function(editor) {
@@ -9,18 +16,15 @@ function setMarkdownTextSize() {
     }
   });
 
-  app.dialogs.showInputDialog("Set Markdown Text Font Size in px:",""+currentFontSize).then(function ({buttonId, returnValue}) {
+  app.dialogs.showInputDialog("Set Markdown Text Font Size in px (use empty for default):",""+currentFontSize).then(function ({buttonId, returnValue}) {
     if (buttonId === 'ok') {
       if ((returnValue == "") || (returnValue=="default")) {
-        document.querySelectorAll('.CodeMirror').forEach(function(editor) {
-          editor.style.fontSize = ""
-        });
+        setDefinedMarkdownTextSize("")
         app.toast.info("Markdown font size set to it's default value")
       } else {
         if(!isNaN(Number(returnValue))) {
-          document.querySelectorAll('.CodeMirror').forEach(function(editor) {
-            editor.style.fontSize = returnValue+'px'
-          });
+          setDefinedMarkdownTextSize(returnValue+'px')
+          prefManager.set("SetMarkdownTextOptions::FontSize",returnValue)
           app.toast.info("Markdown font size set to: "+returnValue)
         } else {
           app.toast.error("Value ["+returnValue+"] is not a valid number.")
@@ -34,9 +38,12 @@ function setMarkdownTextSize() {
 }
 
 
-
+let prefManager
 function init () {
-  app.commands.register('SetMarkdownTextoptions:setMarkdownTextSize', setMarkdownTextSize)
+  prefManager = app.preferences
+  app.commands.register('SetMarkdownTextOptions:setMarkdownTextSize', setMarkdownTextSize)
+  fontSize = prefManager.get("SetMarkdownTextOptions::FontSize")
+  if (fontSize) { setDefinedMarkdownTextSize(fontSize+"px") }
 }
 
 exports.init = init

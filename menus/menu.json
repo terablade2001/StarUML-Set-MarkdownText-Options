@@ -5,12 +5,12 @@
       "submenu": [
         {
           "label": "Set Markdown Text options",
-          "id": "tools.SetMarkdownTextoptions",
+          "id": "tools.SetMarkdownTextOptions",
           "submenu": [
             {
               "label": "Set Markdown Text (px)",
-              "id": "tool.SetMarkdownTextoptions.setMarkdownTextSize",
-              "command": "SetMarkdownTextoptions:setMarkdownTextSize"
+              "id": "tool.SetMarkdownTextOptions.setMarkdownTextSize",
+              "command": "SetMarkdownTextOptions:setMarkdownTextSize"
             }
           ]
         }
