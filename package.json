@@ -3,7 +3,7 @@
   "title": "Set Markdown Text options",
   "description": "User can set the font-size and alingment of the text in the Markdown views",
   "homepage": "https://github.com/terablade2001/StarUML-Set-MarkdownText-Options",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "keywords": ["Text","Font","Size","Wrap"],
   "author": {
     "name": "Vasileios Pothos",
