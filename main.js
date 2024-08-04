@@ -2,7 +2,10 @@ function setMarkdownTextSize() {
   var currentFontSize = "default"
   document.querySelectorAll('.CodeMirror').forEach(function(editor) {
     if (editor.style.fontSize) {
-      currentFontSize
+      if (editor.style.fontSize != "") {
+        currentFontSize = editor.style.fontSize
+        currentFontSize = currentFontSize.replace("px", "")
+      }
     }
   });
 
@@ -10,13 +13,13 @@ function setMarkdownTextSize() {
     if (buttonId === 'ok') {
       if ((returnValue == "") || (returnValue=="default")) {
         document.querySelectorAll('.CodeMirror').forEach(function(editor) {
-          editor.style.fontSize = "";
+          editor.style.fontSize = ""
         });
         app.toast.info("Markdown font size set to it's default value")
       } else {
         if(!isNaN(Number(returnValue))) {
           document.querySelectorAll('.CodeMirror').forEach(function(editor) {
-            editor.style.fontSize = returnValue+'px';
+            editor.style.fontSize = returnValue+'px'
           });
           app.toast.info("Markdown font size set to: "+returnValue)
         } else {
@@ -27,7 +30,7 @@ function setMarkdownTextSize() {
       app.toast.warning("Set of markdown font size cancelled by the user...")
     }
   })
-  return 0;
+  return 0
 }
 
 
