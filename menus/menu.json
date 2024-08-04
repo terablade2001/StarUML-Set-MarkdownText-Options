@@ -8,9 +8,15 @@
           "id": "tools.SetMarkdownTextOptions",
           "submenu": [
             {
-              "label": "Set Markdown Text (px)",
+              "label": "Set Markdown Text Size",
               "id": "tool.SetMarkdownTextOptions.setMarkdownTextSize",
               "command": "SetMarkdownTextOptions:setMarkdownTextSize"
+            },
+            {
+              "label": "Markdown Text Wrap",
+              "id": "tool.SetMarkdownTextOptions.updateMarkdownTextWrapping",
+              "type": "checkbox",
+              "command": "SetMarkdownTextOptions:updateMarkdownTextWrapping"
             }
           ]
         }
