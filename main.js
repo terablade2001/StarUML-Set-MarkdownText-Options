@@ -42,6 +42,11 @@ function setMarkdownTextWrapping(onOff) {
   document.querySelectorAll('.CodeMirror').forEach(function(editor) {
     editor.CodeMirror.setOption('lineWrapping', onOff);
   });
+  if (onOff == true) {
+    app.toast.info("Markdown wrapping is now [ENABLED]")
+  } else {
+    app.toast.info("Markdown wrapping is now [DISABLED]")
+  }
 }
 
 function updateMarkdownTextWrapping() {
