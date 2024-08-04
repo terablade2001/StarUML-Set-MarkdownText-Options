@@ -1,9 +1,9 @@
 {
   "name": "terablade2001.setmarkdowntextoptions",
   "title": "Set Markdown Text options",
-  "description": "User can set the font-size and alingment of the text in the Markdown views",
+  "description": "Set font-text size (in pixels) and wrapping (On/Off) of the markdown text in StarUML S/W.",
   "homepage": "https://github.com/terablade2001/StarUML-Set-MarkdownText-Options",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "keywords": ["Text","Font","Size","Wrap"],
   "author": {
     "name": "Vasileios Pothos",
