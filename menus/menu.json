@@ -13,9 +13,8 @@
               "command": "SetMarkdownTextOptions:setMarkdownTextSize"
             },
             {
-              "label": "Markdown Text Wrap",
+              "label": "Markdown Text Wrap (On/Off)",
               "id": "tool.SetMarkdownTextOptions.updateMarkdownTextWrapping",
-              "type": "checkbox",
               "command": "SetMarkdownTextOptions:updateMarkdownTextWrapping"
             }
           ]

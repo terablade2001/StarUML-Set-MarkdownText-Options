@@ -38,32 +38,10 @@ function setMarkdownTextSize() {
 }
 
 
-function findWrappingSubMenuItem() {
-  var menu
-  for(var i=0; i < app.menu.template.length; i++){
-    menu = app.menu.template[i]
-    if (menu.id == "tools") { break }
-  }
-  var submenu
-  for(var i=0; i < menu.submenu.length; i++){
-    submenu = menu.submenu[i]
-    if (submenu.id == "tools.SetMarkdownTextOptions") { break }
-  }
-  var wrappingSubmenu
-  for(var i=0; i < submenu.submenu.length; i++){
-    wrappingSubmenu = submenu.submenu[i]
-    if (wrappingSubmenu.id == "tool.SetMarkdownTextOptions.updateMarkdownTextWrapping") { break }
-  }
-  return wrappingSubmenu
-}
-
 function setMarkdownTextWrapping(onOff) {
-  wrappingSubmenu = findWrappingSubMenuItem()
-  if (onOff == true) {
-    wrappingSubmenu.updateStates(null,null,{'format.show-shadow': true})
-  } else {
-    wrappingSubmenu.updateStates(null,null,{'format.auto-resize': false})
-  }
+  document.querySelectorAll('.CodeMirror').forEach(function(editor) {
+    editor.CodeMirror.setOption('lineWrapping', onOff);
+  });
 }
 
 function updateMarkdownTextWrapping() {
@@ -73,7 +51,7 @@ function updateMarkdownTextWrapping() {
   } else {
     wrapping = false
   }
-  // prefManager.set("SetMarkdownTextOptions::Wrapping", wrapping)
+  prefManager.set("SetMarkdownTextOptions::Wrapping", wrapping)
   setMarkdownTextWrapping(wrapping)
 }
 
